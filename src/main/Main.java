@@ -1,12 +1,18 @@
+
 package main;
 
 import entities.Animal;
 import entities.Zoo;
+import entities.Aquatic;
+import entities.Terrestrial;
+import entities.Dolphin;
+import entities.Penguin;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        // Animaux du zoo : code des Prosits precedents
         Animal lion = new Animal("Feline", "Simba", 5, true);
         Animal tiger = new Animal("Feline", "Tiger", 4, true);
         Animal eagle = new Animal("Bird", "Eagle", 3, false);
@@ -34,5 +40,39 @@ public class Main {
 
         System.out.println("Animals after removing lion:");
         myZoo.displayAnimals();
+
+        // Prosit 5 : nouvelles classes
+
+        Aquatic aquatic = new Aquatic(
+                "Fish", "Nemo", 2, false, "Ocean");
+
+        Terrestrial terrestrial = new Terrestrial(
+                "Feline", "Leo", 5, true, 4);
+
+        Dolphin dolphin = new Dolphin(
+                "Cetacean", "Flipper", 8, true, "Ocean", 30.5f);
+
+        Penguin penguin = new Penguin(
+                "Bird", "Pingu", 3, false, "Ocean", 20.0f);
+
+        // Affichage des objets
+        System.out.println("\nAquatic:");
+        System.out.println(aquatic);
+
+        System.out.println("\nTerrestrial:");
+        System.out.println(terrestrial);
+
+        System.out.println("\nDolphin:");
+        System.out.println(dolphin);
+
+        System.out.println("\nPenguin:");
+        System.out.println(penguin);
+
+        // Comportement de nage
+        System.out.println("\nSwimming:");
+
+        aquatic.swim();
+        dolphin.swim();
+        penguin.swim();
     }
 }
