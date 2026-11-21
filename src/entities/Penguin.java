@@ -1,7 +1,6 @@
 package entities;
 
 public class Penguin extends Aquatic {
-
     protected float swimmingDepth;
 
     public Penguin(String family, String name, int age, boolean isMammal,
@@ -10,9 +9,17 @@ public class Penguin extends Aquatic {
         this.swimmingDepth = swimmingDepth;
     }
 
+    public float getSwimmingDepth() {
+        return swimmingDepth;
+    }
+
     @Override
     public String toString() {
-        return super.toString()
-                + ", Swimming depth: " + swimmingDepth;
+        return super.toString() + ", Swimming depth: " + swimmingDepth;
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("This penguin is swimming.");
     }
 }

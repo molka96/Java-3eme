@@ -1,7 +1,6 @@
 package entities;
 
 public class Dolphin extends Aquatic {
-
     protected float swimmingSpeed;
 
     public Dolphin(String family, String name, int age, boolean isMammal,
@@ -12,8 +11,7 @@ public class Dolphin extends Aquatic {
 
     @Override
     public String toString() {
-        return super.toString()
-                + ", Swimming speed: " + swimmingSpeed;
+        return super.toString() + ", Swimming speed: " + swimmingSpeed;
     }
 
     @Override

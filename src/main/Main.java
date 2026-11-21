@@ -1,9 +1,7 @@
-
 package main;
 
 import entities.Animal;
 import entities.Zoo;
-import entities.Aquatic;
 import entities.Terrestrial;
 import entities.Dolphin;
 import entities.Penguin;
@@ -12,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Animaux du zoo : code des Prosits precedents
+        // Animaux du zoo : Prosits precedents
         Animal lion = new Animal("Feline", "Simba", 5, true);
         Animal tiger = new Animal("Feline", "Tiger", 4, true);
         Animal eagle = new Animal("Bird", "Eagle", 3, false);
@@ -41,11 +39,7 @@ public class Main {
         System.out.println("Animals after removing lion:");
         myZoo.displayAnimals();
 
-        // Prosit 5 : nouvelles classes
-
-        Aquatic aquatic = new Aquatic(
-                "Fish", "Nemo", 2, false, "Ocean");
-
+        // Prosit 5
         Terrestrial terrestrial = new Terrestrial(
                 "Feline", "Leo", 5, true, 4);
 
@@ -55,9 +49,8 @@ public class Main {
         Penguin penguin = new Penguin(
                 "Bird", "Pingu", 3, false, "Ocean", 20.0f);
 
-        // Affichage des objets
-        System.out.println("\nAquatic:");
-        System.out.println(aquatic);
+        Penguin penguin2 = new Penguin(
+                "Bird", "Tux", 4, false, "Antarctica", 25.0f);
 
         System.out.println("\nTerrestrial:");
         System.out.println(terrestrial);
@@ -68,11 +61,30 @@ public class Main {
         System.out.println("\nPenguin:");
         System.out.println(penguin);
 
-        // Comportement de nage
-        System.out.println("\nSwimming:");
+        // Prosit 6 - Instruction 25
+        System.out.println("\nAdding aquatic animals:");
 
-        aquatic.swim();
-        dolphin.swim();
-        penguin.swim();
+        myZoo.addAquaticAnimal(dolphin);
+        myZoo.addAquaticAnimal(penguin);
+        myZoo.addAquaticAnimal(penguin2);
+
+        // Instruction 26
+        System.out.println("\nSwimming:");
+        myZoo.displayAquaticAnimals();
+
+        // Instruction 27
+        System.out.println("\nMaximum penguin swimming depth:");
+        System.out.println(myZoo.maxPenguinSwimmingDepth());
+
+        // Instruction 28
+        System.out.println("\nNumber of aquatic animals by type:");
+        myZoo.displayNumberOfAquaticsByType();
+
+        // Instruction 31
+        System.out.println("\nEquals test:");
+        Penguin penguin3 = new Penguin(
+                "Bird", "Pingu", 3, false, "Ocean", 30.0f);
+
+        System.out.println(penguin.equals(penguin3));
     }
 }
