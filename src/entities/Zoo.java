@@ -14,19 +14,34 @@ public class Zoo {
         this.animals = new Animal[nbrCages];
     }
 
-    public boolean addAnimal(Animal animal) {
-        if (isZooFull()) {
-            return false;
+    // Prosit 7 - Instructions 32, 33 et 34
+    public void addAnimal(Animal animal)
+            throws ZooFullException, InvalidAgeException {
+
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException();
         }
 
         for (int i = 0; i < animals.length; i++) {
             if (animals[i] == null) {
                 animals[i] = animal;
-                return true;
+                return;
             }
         }
 
-        return false;
+        throw new ZooFullException();
+    }
+
+    public int countAnimals() {
+        int count = 0;
+
+        for (int i = 0; i < animals.length; i++) {
+            if (animals[i] != null) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public boolean isZooFull() {
@@ -74,7 +89,7 @@ public class Zoo {
         System.out.println("Number of cages: " + nbrCages);
     }
 
-    // Instruction 25
+    // Prosit 6 - Instruction 25
     public void addAquaticAnimal(Aquatic aquatic) {
         for (int i = 0; i < aquaticAnimals.length; i++) {
             if (aquaticAnimals[i] == null) {
@@ -86,7 +101,7 @@ public class Zoo {
         System.out.println("The aquatic animals array is full.");
     }
 
-    // Instruction 26
+    // Prosit 6 - Instruction 26
     public void displayAquaticAnimals() {
         for (int i = 0; i < aquaticAnimals.length; i++) {
             if (aquaticAnimals[i] != null) {
@@ -95,7 +110,7 @@ public class Zoo {
         }
     }
 
-    // Instruction 27
+    // Prosit 6 - Instruction 27
     public float maxPenguinSwimmingDepth() {
         float maxDepth = 0;
 
@@ -112,7 +127,7 @@ public class Zoo {
         return maxDepth;
     }
 
-    // Instruction 28
+    // Prosit 6 - Instruction 28
     public void displayNumberOfAquaticsByType() {
         int dolphinCount = 0;
         int penguinCount = 0;

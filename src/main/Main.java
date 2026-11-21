@@ -5,41 +5,97 @@ import entities.Zoo;
 import entities.Terrestrial;
 import entities.Dolphin;
 import entities.Penguin;
+import entities.ZooFullException;
+import entities.InvalidAgeException;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Animaux du zoo : Prosits precedents
-        Animal lion = new Animal("Feline", "Simba", 5, true);
-        Animal tiger = new Animal("Feline", "Tiger", 4, true);
-        Animal eagle = new Animal("Bird", "Eagle", 3, false);
-
+        // Création du zoo avec 3 cages
         Zoo myZoo = new Zoo("My Zoo", "Tunis", 3);
 
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(tiger));
-        System.out.println(myZoo.addAnimal(eagle));
+        // Création des animaux
+        Animal lion = new Animal("Feline", "Simba", 5, true);
+        Animal invalidAnimal = new Animal("Feline", "BadAge", -2, true);
+        Animal tiger = new Animal("Feline", "Tiger", 4, true);
+        Animal eagle = new Animal("Bird", "Eagle", 3, false);
+        Animal zebra = new Animal("Equine", "Zebra", 6, false);
 
-        System.out.println("Animals in the zoo:");
+        // Instruction 33 et 34 : gestion des exceptions
+
+        System.out.println("Adding lion:");
+        try {
+            myZoo.addAnimal(lion);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        } catch (ZooFullException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Total animals: " + myZoo.countAnimals());
+
+        System.out.println("\nAdding animal with negative age:");
+        try {
+            myZoo.addAnimal(invalidAnimal);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        } catch (ZooFullException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Total animals: " + myZoo.countAnimals());
+
+        System.out.println("\nAdding tiger:");
+        try {
+            myZoo.addAnimal(tiger);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        } catch (ZooFullException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Total animals: " + myZoo.countAnimals());
+
+        System.out.println("\nAdding eagle:");
+        try {
+            myZoo.addAnimal(eagle);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        } catch (ZooFullException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Total animals: " + myZoo.countAnimals());
+
+        // Tentative d'ajout lorsque le zoo est plein
+        System.out.println("\nAdding zebra:");
+        try {
+            myZoo.addAnimal(zebra);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        } catch (ZooFullException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Total animals: " + myZoo.countAnimals());
+
+        // Affichage des animaux du zoo
+        System.out.println("\nAnimals in the zoo:");
         myZoo.displayAnimals();
 
-        System.out.println("Zoo information:");
+        System.out.println("\nZoo information:");
         myZoo.displayZoo();
 
-        System.out.println("Is the zoo full?");
+        System.out.println("\nIs the zoo full?");
         System.out.println(myZoo.isZooFull());
 
-        System.out.println("Search for lion:");
+        // Recherche et suppression
+        System.out.println("\nSearch for lion:");
         System.out.println(myZoo.searchAnimal(lion));
 
-        System.out.println("Remove lion:");
+        System.out.println("\nRemove lion:");
         System.out.println(myZoo.removeAnimal(lion));
 
-        System.out.println("Animals after removing lion:");
+        System.out.println("\nAnimals after removing lion:");
         myZoo.displayAnimals();
 
-        // Prosit 5
+        // Prosit 5 : création des animaux
         Terrestrial terrestrial = new Terrestrial(
                 "Feline", "Leo", 5, true, 4);
 
@@ -52,6 +108,7 @@ public class Main {
         Penguin penguin2 = new Penguin(
                 "Bird", "Tux", 4, false, "Antarctica", 25.0f);
 
+        // Prosit 6 : affichage des objets
         System.out.println("\nTerrestrial:");
         System.out.println(terrestrial);
 
@@ -61,9 +118,7 @@ public class Main {
         System.out.println("\nPenguin:");
         System.out.println(penguin);
 
-        // Prosit 6 - Instruction 25
-        System.out.println("\nAdding aquatic animals:");
-
+        // Prosit 6 : ajout des animaux aquatiques
         myZoo.addAquaticAnimal(dolphin);
         myZoo.addAquaticAnimal(penguin);
         myZoo.addAquaticAnimal(penguin2);
